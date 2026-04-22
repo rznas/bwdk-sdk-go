@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Reason** | Pointer to **string** | دلیل اختیاری برای بازگرداندن وجه | [optional] 
+**Reason** | Pointer to **string** | Optional reason for the refund | [optional] 
 
 ## Methods
 

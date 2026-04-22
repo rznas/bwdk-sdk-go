@@ -5,19 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int32** |  | [readonly] 
-**Name** | **string** | نام روش/گزینه بسته‌بندی | 
-**Description** | Pointer to **string** | شناسه روش ارسال برای استفاده در سفارش | [optional] 
-**ShippingType** | Pointer to [**ShippingTypeEnum**](ShippingTypeEnum.md) | شناسه وضعیت ارسال از دیجی اکسپرس  * &#x60;1&#x60; - سایر * &#x60;2&#x60; - دیجی اکسپرس | [optional] 
+**Name** | **string** | نام روش ارسال | 
+**Description** | Pointer to **string** | توضیحات روش ارسال و جزئیات تحویل آن | [optional] 
+**ShippingType** | Pointer to [**ShippingTypeEnum**](ShippingTypeEnum.md) | نوع روش ارسال: عادی یا دیجی اکسپرس  * &#x60;1&#x60; - سایر * &#x60;2&#x60; - دیجی اکسپرس | [optional] 
 **GetShippingTypeDisplay** | **string** |  | [readonly] 
 **ShippingTypeDisplay** | **string** |  | [readonly] 
-**Cost** | Pointer to **int32** | هزینه ارسال برای منطقه اصلی (مثلاً تهران) به تومان | [optional] 
+**Cost** | Pointer to **int32** | هزینه ارسال برای منطقه اولیه (مثلاً تهران) به تومان | [optional] 
 **SecondaryCost** | Pointer to **int32** | هزینه ارسال برای مناطق دیگر به تومان | [optional] 
-**MinimumTimeSending** | Pointer to **int32** | حداقل تعداد روز از تاریخ سفارش تا تحویل | [optional] 
-**MaximumTimeSending** | Pointer to **int32** | Maximum number of days from order date to delivery | [optional] 
+**MinimumTimeSending** | Pointer to **int32** | حداقل تعداد روزها از تاریخ سفارش تا تحویل | [optional] 
+**MaximumTimeSending** | Pointer to **int32** | حداکثر تعداد روزها از تاریخ سفارش تا تحویل | [optional] 
 **DeliveryTimeDisplay** | **string** |  | [readonly] 
 **DeliveryTimeRangeDisplay** | [**DeliveryTimeRangeDisplay**](DeliveryTimeRangeDisplay.md) |  | [readonly] 
 **InventoryAddress** | [**BusinessAddress**](BusinessAddress.md) |  | [readonly] 
-**IsPayAtDestination** | Pointer to **bool** | آیا روش ارسال پرداخت در مقصد است | [optional] 
+**IsPayAtDestination** | Pointer to **bool** | Whether the shipping method is pay at destination | [optional] 
 
 ## Methods
 

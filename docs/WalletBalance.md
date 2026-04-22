@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | Pointer to **int32** | موجودی کیف پول فعلی (برحسب تومان) | [optional] 
-**NegativeSettlementDeadline** | **NullableString** | مهلت تسویه تراز منفی | [readonly] 
+**Amount** | Pointer to **int32** | Current wallet balance in Tomans | [optional] 
+**NegativeSettlementDeadline** | **NullableString** | Deadline for settling negative balance | [readonly] 
 
 ## Methods
 

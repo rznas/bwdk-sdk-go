@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IsAuthenticated** | **bool** | وضعیت لاگین بودن | 
+**IsAuthenticated** | **bool** | Authentication status | 
 
 ## Methods
 

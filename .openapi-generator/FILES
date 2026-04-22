@@ -3,12 +3,14 @@
 .travis.yml
 README.md
 api/openapi.yaml
-api_.go
+api_merchant_orders.go
+api_merchant_wallet.go
+api_order_shipping.go
+api_seller_profile_management.go
 client.go
 configuration.go
 docs/AuthStatusResponse.md
 docs/BusinessAddress.md
-docs/DefaultApi.md
 docs/DeliveryTimeRangeDisplay.md
 docs/ErrorEnum.md
 docs/GatewayTypeEnum.md
@@ -16,7 +18,9 @@ docs/Merchant.md
 docs/MerchantOrderCancelShipmentResponse.md
 docs/MerchantOrderRefundResponse.md
 docs/MerchantOrderReviveShipmentResponse.md
+docs/MerchantOrdersAPI.md
 docs/MerchantPaidOrderList.md
+docs/MerchantWalletAPI.md
 docs/NullEnum.md
 docs/Option.md
 docs/OrderCreate.md
@@ -24,6 +28,7 @@ docs/OrderCreateResponse.md
 docs/OrderDetail.md
 docs/OrderError.md
 docs/OrderItemCreate.md
+docs/OrderShippingAPI.md
 docs/OrderStatusEnum.md
 docs/OrderUser.md
 docs/Packing.md
@@ -32,6 +37,7 @@ docs/PaginatedOrderDetailList.md
 docs/PaymentOrder.md
 docs/RefundOrder.md
 docs/ReviveShipment.md
+docs/SellerProfileManagementAPI.md
 docs/ShippingMethod.md
 docs/ShippingTypeEnum.md
 docs/TypeNameEnum.md
@@ -73,5 +79,8 @@ model_update_order_status.go
 model_verify_order.go
 model_wallet_balance.go
 response.go
-test/api__test.go
+test/api_merchant_orders_test.go
+test/api_merchant_wallet_test.go
+test/api_order_shipping_test.go
+test/api_seller_profile_management_test.go
 utils.go

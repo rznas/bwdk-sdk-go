@@ -20,9 +20,9 @@ Name | Type | Description | Notes
 **SourceAddress** | Pointer to **interface{}** | مقدار توسط سیستم جایگذاری می شود | [optional] 
 **User** | **NullableInt32** |  | [readonly] 
 **ReservationExpiredAt** | Pointer to **NullableInt32** | مهلت پرداخت (به عنوان Unix timestamp) قبل از اتمام سفارش | [optional] 
-**ReferenceCode** | **string** | کد مرجع منحصر به فرد برای پیگیری سفارش مشتری (فرمت: BD-XXXXXXXX) | [readonly] 
-**PreparationTime** | Pointer to **int32** | زمان آمادهسازی سفارش (به روز) | [optional] [default to 2]
-**Weight** | Pointer to **float64** | وزن کل سفارش (بر حسب گرم) | [optional] 
+**ReferenceCode** | **string** | کد مرجع یکتا برای پیگیری سفارش مشتری (قالب: BD-XXXXXXXX) | [readonly] 
+**PreparationTime** | Pointer to **int32** | Preparation time for the order (in days) | [optional] [default to 2]
+**Weight** | Pointer to **float64** | Total Weight of the order (in grams) | [optional] 
 
 ## Methods
 

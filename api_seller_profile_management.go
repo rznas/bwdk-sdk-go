@@ -11,236 +11,137 @@ API version: 1.0.0
 package bwdk_sdk
 
 import (
-	"encoding/json"
 	"bytes"
-	"fmt"
+	"context"
+	"io"
+	"net/http"
+	"net/url"
 )
 
-// checks if the MerchantOrderCancelShipmentResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MerchantOrderCancelShipmentResponse{}
 
-// MerchantOrderCancelShipmentResponse struct for MerchantOrderCancelShipmentResponse
-type MerchantOrderCancelShipmentResponse struct {
-	// Success message
-	Message string `json:"message"`
-	// Order unique identifier
-	OrderUuid string `json:"order_uuid"`
-	// Current order status  * `1` - اولیه * `2` - شروع شده * `3` - در انتظار * `4` - در انتظار درگاه * `5` - منقضی شده * `6` - لغو شده * `7` - پرداخت‌شده توسط کاربر * `8` - پرداخت موفیت آمیز نبود * `9` - تأیید شده توسط فروشگاه * `10` - تأیید توسط فروشگاه ناموفق بود * `11` - ناموفق از سوی فروشگاه * `12` - لغوشده توسط فروشگاه * `13` - درخواست بازگشت وجه به مشتری به دلیل درخواست مشتری * `14` - درخواست بازگشت وجه به فروشگاه پس از عدم تأیید توسط فروشگاه * `15` - درخواست بازگشت وجه به مشتری پس از ناموفق بودن توسط فروشگاه * `16` - بازپرداخت به فروشگاه پس از لغو توسط فروشگاه * `17` - بازپرداخت تکمیل شد * `18` - زمان انقضا گذشته است * `19` - تحویل شده * `20` - جمع اوری شده و در حال ارسال
-	Status OrderStatusEnum `json:"status"`
-	// Human-readable status
-	StatusDisplay string `json:"status_display"`
+// SellerProfileManagementAPIService SellerProfileManagementAPI service
+type SellerProfileManagementAPIService service
+
+type ApiMerchantApiV1AuthStatusRetrieveRequest struct {
+	ctx context.Context
+	ApiService *SellerProfileManagementAPIService
 }
 
-type _MerchantOrderCancelShipmentResponse MerchantOrderCancelShipmentResponse
-
-// NewMerchantOrderCancelShipmentResponse instantiates a new MerchantOrderCancelShipmentResponse object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewMerchantOrderCancelShipmentResponse(message string, orderUuid string, status OrderStatusEnum, statusDisplay string) *MerchantOrderCancelShipmentResponse {
-	this := MerchantOrderCancelShipmentResponse{}
-	this.Message = message
-	this.OrderUuid = orderUuid
-	this.Status = status
-	this.StatusDisplay = statusDisplay
-	return &this
+func (r ApiMerchantApiV1AuthStatusRetrieveRequest) Execute() (*AuthStatusResponse, *http.Response, error) {
+	return r.ApiService.MerchantApiV1AuthStatusRetrieveExecute(r)
 }
 
-// NewMerchantOrderCancelShipmentResponseWithDefaults instantiates a new MerchantOrderCancelShipmentResponse object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewMerchantOrderCancelShipmentResponseWithDefaults() *MerchantOrderCancelShipmentResponse {
-	this := MerchantOrderCancelShipmentResponse{}
-	return &this
-}
+/*
+MerchantApiV1AuthStatusRetrieve وضعیت لاگین بودن
 
-// GetMessage returns the Message field value
-func (o *MerchantOrderCancelShipmentResponse) GetMessage() string {
-	if o == nil {
-		var ret string
-		return ret
+<div dir="rtl" style="text-align: right;">
+
+بررسی وضعیت احراز هویت فروشنده
+
+## توضیحات
+
+این endpoint برای بررسی اعتبار **API_KEY** فروشنده استفاده می‌شود. اگر کلید معتبر باشد، پاسخ `is_authenticated: true` برمی‌گردد. از این endpoint برای تأیید صحت کلید API قبل از شروع عملیات استفاده کنید.
+
+نیاز به **API_KEY** فروشنده دارد (فقط Header لازم است، بدنه درخواست ندارد).
+
+</div>
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiMerchantApiV1AuthStatusRetrieveRequest
+*/
+func (a *SellerProfileManagementAPIService) MerchantApiV1AuthStatusRetrieve(ctx context.Context) ApiMerchantApiV1AuthStatusRetrieveRequest {
+	return ApiMerchantApiV1AuthStatusRetrieveRequest{
+		ApiService: a,
+		ctx: ctx,
 	}
-
-	return o.Message
 }
 
-// GetMessageOk returns a tuple with the Message field value
-// and a boolean to check if the value has been set.
-func (o *MerchantOrderCancelShipmentResponse) GetMessageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Message, true
-}
+// Execute executes the request
+//  @return AuthStatusResponse
+func (a *SellerProfileManagementAPIService) MerchantApiV1AuthStatusRetrieveExecute(r ApiMerchantApiV1AuthStatusRetrieveRequest) (*AuthStatusResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AuthStatusResponse
+	)
 
-// SetMessage sets field value
-func (o *MerchantOrderCancelShipmentResponse) SetMessage(v string) {
-	o.Message = v
-}
-
-// GetOrderUuid returns the OrderUuid field value
-func (o *MerchantOrderCancelShipmentResponse) GetOrderUuid() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.OrderUuid
-}
-
-// GetOrderUuidOk returns a tuple with the OrderUuid field value
-// and a boolean to check if the value has been set.
-func (o *MerchantOrderCancelShipmentResponse) GetOrderUuidOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.OrderUuid, true
-}
-
-// SetOrderUuid sets field value
-func (o *MerchantOrderCancelShipmentResponse) SetOrderUuid(v string) {
-	o.OrderUuid = v
-}
-
-// GetStatus returns the Status field value
-func (o *MerchantOrderCancelShipmentResponse) GetStatus() OrderStatusEnum {
-	if o == nil {
-		var ret OrderStatusEnum
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *MerchantOrderCancelShipmentResponse) GetStatusOk() (*OrderStatusEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *MerchantOrderCancelShipmentResponse) SetStatus(v OrderStatusEnum) {
-	o.Status = v
-}
-
-// GetStatusDisplay returns the StatusDisplay field value
-func (o *MerchantOrderCancelShipmentResponse) GetStatusDisplay() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.StatusDisplay
-}
-
-// GetStatusDisplayOk returns a tuple with the StatusDisplay field value
-// and a boolean to check if the value has been set.
-func (o *MerchantOrderCancelShipmentResponse) GetStatusDisplayOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.StatusDisplay, true
-}
-
-// SetStatusDisplay sets field value
-func (o *MerchantOrderCancelShipmentResponse) SetStatusDisplay(v string) {
-	o.StatusDisplay = v
-}
-
-func (o MerchantOrderCancelShipmentResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SellerProfileManagementAPIService.MerchantApiV1AuthStatusRetrieve")
 	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o MerchantOrderCancelShipmentResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["message"] = o.Message
-	toSerialize["order_uuid"] = o.OrderUuid
-	toSerialize["status"] = o.Status
-	toSerialize["status_display"] = o.StatusDisplay
-	return toSerialize, nil
-}
-
-func (o *MerchantOrderCancelShipmentResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"message",
-		"order_uuid",
-		"status",
-		"status_display",
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	allProperties := make(map[string]interface{})
+	localVarPath := localBasePath + "/merchant/api/v1/auth/status/"
 
-	err = json.Unmarshal(data, &allProperties)
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
-	if err != nil {
-		return err;
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["MerchantAPIKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
 		}
 	}
-
-	varMerchantOrderCancelShipmentResponse := _MerchantOrderCancelShipmentResponse{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMerchantOrderCancelShipmentResponse)
-
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return err
+		return localVarReturnValue, nil, err
 	}
 
-	*o = MerchantOrderCancelShipmentResponse(varMerchantOrderCancelShipmentResponse)
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
 
-	return err
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
-
-type NullableMerchantOrderCancelShipmentResponse struct {
-	value *MerchantOrderCancelShipmentResponse
-	isSet bool
-}
-
-func (v NullableMerchantOrderCancelShipmentResponse) Get() *MerchantOrderCancelShipmentResponse {
-	return v.value
-}
-
-func (v *NullableMerchantOrderCancelShipmentResponse) Set(val *MerchantOrderCancelShipmentResponse) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableMerchantOrderCancelShipmentResponse) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableMerchantOrderCancelShipmentResponse) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableMerchantOrderCancelShipmentResponse(val *MerchantOrderCancelShipmentResponse) *NullableMerchantOrderCancelShipmentResponse {
-	return &NullableMerchantOrderCancelShipmentResponse{value: val, isSet: true}
-}
-
-func (v NullableMerchantOrderCancelShipmentResponse) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableMerchantOrderCancelShipmentResponse) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
-}
-
-

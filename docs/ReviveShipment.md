@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PreparationTime** | Pointer to **NullableInt32** | زمان آمادهسازی سفارش (به روز) | [optional] 
+**PreparationTime** | Pointer to **NullableInt32** | The preparation time for the order in days. | [optional] 
 
 ## Methods
 

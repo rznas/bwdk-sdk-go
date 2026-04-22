@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **TaxAmount** | Pointer to **int32** | مبلغ کل مالیات برای این کالا (به تومان) | [optional] 
 **ImageLink** | Pointer to **NullableString** | آدرس تصویر محصول | [optional] 
 **Options** | [**[]Option**](Option.md) |  | 
-**PreparationTime** | Pointer to **int32** | زمان آمادهسازی کالا (به روز) | [optional] [default to 2]
-**Weight** | Pointer to **float64** | وزن کالا (بر حسب گرم) | [optional] 
+**PreparationTime** | Pointer to **int32** | Preparation time for the item (in days) | [optional] [default to 2]
+**Weight** | Pointer to **float64** | Weight of the item (in grams) | [optional] 
 
 ## Methods
 

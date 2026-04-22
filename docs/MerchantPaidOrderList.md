@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrderUuid** | **string** |  | [readonly] 
 **MerchantOrderId** | **string** | شناسه منحصر به فرد سفارش در سیستم فروشنده | [readonly] 
-**MerchantUniqueId** | **string** | شناسه منحصر به فرد برای پذیرنده برای تأیید سفارش | [readonly] 
+**MerchantUniqueId** | **string** | شناسه منحصر به فرد فروشنده برای تأیید سفارش | [readonly] 
 **PaidAt** | **NullableTime** |  | [readonly] 
 **RefundsAt** | **NullableTime** |  | [readonly] 
 
